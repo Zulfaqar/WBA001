@@ -10,9 +10,15 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function index()
+    {
+        return view('pages.admin.login');
+    }
+
     public function login(Request $request)
     {
-        return view('admin.login');
+        //return view('pages.admin.login');
+        echo 'process login';
     }
 
     public function signup(Request $request)

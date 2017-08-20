@@ -16,7 +16,8 @@ Route::get('/', 'HomeController@index');
 Route::group([
     'prefix' => 'admin',
 ], function () {
-    Route::get('login', 'AdminController@login');
+    Route::get('/', 'AdminController@index');
+    Route::post('login', 'AdminController@login');
     Route::get('logout', 'UserController@logout');
     Route::post('signup', 'AdminController@signup');
 //    Route::post('facebook-connect', 'UserController@facebookConnect');

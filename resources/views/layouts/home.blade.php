@@ -16,7 +16,9 @@
 
     <footer>
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2017 Usaha Tekad Global Trading &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+            &middot; <a href="{{ url('/admin/') }}">Administrator
+        </p>
         @include('includes.footer')
     </footer>
 </div>
