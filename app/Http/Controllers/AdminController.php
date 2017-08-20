@@ -97,6 +97,8 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        echo 'dashboard';
+        $admin = Auth::user();
+
+        print_r($admin->username);
     }
 }
