@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+//used class
+use Auth;
+use Session;
+use Illuminate\Http\Request;
+
 // used model
 use App\User;
-
-//used class
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -17,8 +19,51 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-        //return view('pages.admin.login');
-        echo 'process login';
+        $this->validate($request, [
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $data = $request->input();
+
+        $admin = User::query()
+            ->where('username', trim($data['username']))
+            ->where('user_type', 0)
+            ->first();
+
+        if (!$admin) {
+            if ($request->ajax()) {
+                return response()->json(['status' => 401, 'message' => 'Invalid username!'], 401);
+            } else {
+                return redirect('admin')->with('message', 'Invalid username!');
+            }
+        }
+
+        if ($admin->password == md5($data['password'])) {
+
+            Auth::login($admin, true);
+
+            if ($request->ajax()) {
+                $result = ['status' => 200, 'message' => 'success', 'redirect' => false];
+
+                if ($request->session()->has('admin_data')) {
+                    $result['redirect'] = 'admin/dashboard';
+                }
+
+                return response()->json($result);
+
+            } else {
+                return redirect('/admin/dashboard');
+            }
+
+        }else {
+
+            if ($request->ajax()) {
+                return response()->json(['status' => 401, 'message' => 'Invalid password!'], 401);
+            } else {
+                return redirect('admin')->with('message', 'Invalid password!');
+            }
+        }
     }
 
     public function signup(Request $request)
@@ -48,5 +93,10 @@ class AdminController extends Controller
         $user->save();
 
         return redirect('');
+    }
+
+    public function dashboard()
+    {
+        echo 'dashboard';
     }
 }

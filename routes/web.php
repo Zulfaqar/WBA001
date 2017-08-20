@@ -18,8 +18,9 @@ Route::group([
 ], function () {
     Route::get('/', 'AdminController@index');
     Route::post('login', 'AdminController@login');
-    Route::get('logout', 'UserController@logout');
     Route::post('signup', 'AdminController@signup');
+
+    Route::get('dashboard', 'AdminController@dashboard');
 //    Route::post('facebook-connect', 'UserController@facebookConnect');
 //    Route::get('facebook-callback', 'UserController@facebookCallback');
 //    Route::post('forgot-password', 'UserController@forgotPassword');
