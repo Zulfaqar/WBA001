@@ -8,12 +8,12 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify which of the database connections below you wish
-    | to use as your default connection for all database work. Of course
+    | to use as your includes connection for all database work. Of course
     | you may use many connections at once using the Database library.
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'includes' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
 
         'client' => 'predis',
 
-        'default' => [
+        'includes' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),

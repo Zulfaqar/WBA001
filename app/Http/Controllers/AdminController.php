@@ -41,6 +41,6 @@ class AdminController extends Controller
         $user->user_type = 0;
         $user->save();
 
-        return view('admin.login');
+        return redirect('');
     }
 }
