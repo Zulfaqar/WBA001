@@ -99,6 +99,6 @@ class AdminController extends Controller
     {
         $admin = Auth::user();
 
-        print_r($admin->username);
+        return view('pages.admin.dashboard');
     }
 }
