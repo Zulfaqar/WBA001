@@ -104,10 +104,6 @@ class AdminController extends Controller
 
     public function user()
     {
-//        $result = get_all_user();
-//
-//        return view('pages.admin.user');
-
         $user = new User();
         $result = $user->get_all_user();
 
