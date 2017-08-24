@@ -1,10 +1,10 @@
 
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+            <a class="nav-link {{ Request::segment(2) === 'dashboard' ? 'active' : null }}" href="{{ url('admin/dashboard') }}">Overview <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Reports</a>
+            <a class="nav-link {{ Request::segment(2) === 'dashboard-user' ? 'active' : null }}" href="{{ url('admin/dashboard-user') }}">User</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Analytics</a>

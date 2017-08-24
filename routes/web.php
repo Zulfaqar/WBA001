@@ -21,6 +21,8 @@ Route::group([
     Route::post('signup', 'AdminController@signup');
 
     Route::get('dashboard', 'AdminController@dashboard');
+
+    Route::get('dashboard-user', 'AdminController@user');
 //    Route::post('facebook-connect', 'UserController@facebookConnect');
 //    Route::get('facebook-callback', 'UserController@facebookCallback');
 //    Route::post('forgot-password', 'UserController@forgotPassword');

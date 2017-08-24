@@ -32,7 +32,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function isUserExist($username)
+    public function is_user_exist($username)
     {
         $result = $this->where('username', $username)
             ->pluck('id')
@@ -45,6 +45,13 @@ class User extends Authenticatable
         return false;
     }
 
+    public function get_all_user()
+    {
+        $result = $this->get();
+
+        return $result;
+    }
+
 //    public function getUserById($user_id)
 //    {
 //        $rs = $this->select('name', 'email', 'phone', 'login_id', 'user_from', 'country_code', 'dob', 'state')
@@ -54,4 +61,6 @@ class User extends Authenticatable
 //
 //        return $rs;
 //    }
+
+
 }

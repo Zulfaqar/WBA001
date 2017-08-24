@@ -10,5 +10,6 @@
 
 <!--Style -->
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
 <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+{{--<link href="{{ asset('css/semantic.min.css') }}" rel="stylesheet">--}}
+<link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">

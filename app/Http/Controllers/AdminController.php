@@ -80,7 +80,7 @@ class AdminController extends Controller
 
         $user = new User();
 
-        if ($user->isUserExist($data['username'])) {
+        if ($user->is_user_exist($data['username'])) {
             return response()->json(['error' => 'username', 'message' => 'Username already exist'], 400);
         }
 
@@ -100,5 +100,17 @@ class AdminController extends Controller
         $admin = Auth::user();
 
         return view('pages.admin.dashboard');
+    }
+
+    public function user()
+    {
+//        $result = get_all_user();
+//
+//        return view('pages.admin.user');
+
+        $user = new User();
+        $result = $user->get_all_user();
+
+        return view('pages.admin.user', ['result' => $result]);
     }
 }
