@@ -23,6 +23,8 @@ Route::group([
     Route::get('dashboard', 'AdminController@dashboard');
 
     Route::get('dashboard-user', 'AdminController@user');
+    Route::post('add-agent', 'AdminController@add_agent');
+    Route::post('add-admin', 'AdminController@add_admin');
 //    Route::post('facebook-connect', 'UserController@facebookConnect');
 //    Route::get('facebook-callback', 'UserController@facebookCallback');
 //    Route::post('forgot-password', 'UserController@forgotPassword');

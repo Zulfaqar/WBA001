@@ -45,6 +45,19 @@ class User extends Authenticatable
         return false;
     }
 
+    public function is_agent_exits($agent_id)
+    {
+        $result = $this->where('agent_id', $agent_id)
+            ->pluck('id')
+            ->first();
+
+        if ($result) {
+            return $result;
+        }
+
+        return false;
+    }
+
     public function get_all_user()
     {
         $result = $this->get();

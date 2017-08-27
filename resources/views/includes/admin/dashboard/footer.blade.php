@@ -9,3 +9,12 @@
         $('#user').DataTable();
     });
 </script>
+
+@if ($errors->any()|| $errors->agent_id->first('agent_id'))
+<script>
+    $( document ).ready(function() {
+        $('#add_agent').modal('show')
+    });
+</script>
+@endif
+

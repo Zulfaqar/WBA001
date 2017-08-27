@@ -109,4 +109,56 @@ class AdminController extends Controller
 
         return view('pages.admin.user', ['result' => $result]);
     }
+
+    public function add_agent(Request $request)
+    {
+        $this->validate($request, [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'agent_id' => 'required|string',
+            'email' => 'required|email',
+            'ext' => 'required|string',
+            'phone_number' => 'required|string',
+            'password' => 'required|string',
+            'confirm_password' => 'required|string|same:password',
+        ]);
+
+       $input = $request->flash();
+
+        $data = $request->input();
+
+        $status = 0;
+
+        if(isset($data['status'])){
+            $status = $data['status'];
+        }
+
+        $user = new User();
+
+        if ($user->is_agent_exits($data['agent_id'])) {
+            return redirect('admin/dashboard-user')->withErrors($data, 'agent_id');
+        }
+
+        $user->f_name = $data['first_name'];
+        $user->l_name = $data['last_name'];
+        $user->agent_id = $data['agent_id'];
+        $user->email = $data['email'];
+        $user->phone_number = $data['ext'] .'-'. $data['phone_number'] ;
+        $user->password = md5($data['confirm_password']);
+        $user->user_type = 1;
+
+        $user->unit = $data['unit'];
+        $user->floor = $data['floor'];
+        $user->block = $data['block'];
+        $user->address1 = $data['address1'];
+        $user->address2 = $data['address2'];
+        $user->zip = $data['zip'];
+        $user->state = $data['state'];
+
+        $user->status = $status;
+        $user->save();
+
+        return redirect('admin/dashboard-user')->withInput($input);
+
+    }
 }
