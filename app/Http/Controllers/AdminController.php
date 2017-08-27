@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //used class
+use Validator;
 use Auth;
 use Session;
 use Illuminate\Http\Request;
@@ -112,7 +113,7 @@ class AdminController extends Controller
 
     public function add_agent(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'agent_id' => 'required|string',
@@ -123,7 +124,9 @@ class AdminController extends Controller
             'confirm_password' => 'required|string|same:password',
         ]);
 
-       $input = $request->flash();
+        if ($validator->fails()) {
+            return redirect('admin/dashboard-user')->withErrors($validator)->with('agent', true);
+        }
 
         $data = $request->input();
 
@@ -136,7 +139,7 @@ class AdminController extends Controller
         $user = new User();
 
         if ($user->is_agent_exits($data['agent_id'])) {
-            return redirect('admin/dashboard-user')->withErrors($data, 'agent_id');
+            return redirect('admin/dashboard-user')->withErrors($data, 'agent_id')->with('agent', true);
         }
 
         $user->f_name = $data['first_name'];
@@ -158,7 +161,43 @@ class AdminController extends Controller
         $user->status = $status;
         $user->save();
 
-        return redirect('admin/dashboard-user')->withInput($input);
+        return redirect('admin/dashboard-user');
+
+    }
+
+    public function add_admin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'ext' => 'required|string',
+            'phone_number' => 'required|string',
+            'password' => 'required|string',
+            'confirm_password' => 'required|string|same:password',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('admin/dashboard-user')->withErrors($validator)->with('admin', true);
+        }
+
+        $data = $request->input();
+
+        $user = new User();
+
+        if ($user->is_admin_exits($data['email'])) {
+            return redirect('admin/dashboard-user')->withErrors($data, 'email')->with('admin', true);
+        }
+
+        $user->f_name = $data['first_name'];
+        $user->l_name = $data['last_name'];
+        $user->email = $data['email'];
+        $user->phone_number = $data['ext'] .'-'. $data['phone_number'] ;
+        $user->password = md5($data['confirm_password']);
+        $user->user_type = 0;
+        $user->save();
+
+        return redirect('admin/dashboard-user');
 
     }
 }

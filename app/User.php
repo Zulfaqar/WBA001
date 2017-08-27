@@ -32,9 +32,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function is_user_exist($username)
+    public function is_admin_exits($email)
     {
-        $result = $this->where('username', $username)
+        $result = $this->where('email', $email)
             ->pluck('id')
             ->first();
 

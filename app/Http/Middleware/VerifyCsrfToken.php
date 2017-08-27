@@ -16,5 +16,6 @@ class VerifyCsrfToken extends BaseVerifier
         'admin/signup',
         'admin/login',
         'admin/add-agent',
+        'admin/add-admin',
     ];
 }

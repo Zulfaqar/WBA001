@@ -26,12 +26,9 @@
     {{--</section>--}}
 
 
-
-
-
     <h4>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_agent">Add Agent</button>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addAdmin">Add Admin</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add_admin">Add Admin</button>
     </h4>
     <div class="table-responsive">
         <table id="user" class="ui celled table" cellspacing="0" width="100%">
@@ -79,7 +76,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="first_name" class="col-form-label">First Name : </label>
-                                        <input type="text" class="form-control" id="first_name" placeholder="John"
+                                        <input type="text" class="form-control" id="first_name"
                                                name="first_name">
                                         @if ($errors->first('first_name'))
                                             <div class="invalid-feedback">
@@ -89,7 +86,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="last_name" class="col-form-label">Last Name : </label>
-                                        <input type="text" class="form-control" id="last_name" placeholder="Doe"
+                                        <input type="text" class="form-control" id="last_name"
                                                name="last_name">
                                         @if ($errors->first('last_name'))
                                             <div class="invalid-feedback">
@@ -102,7 +99,7 @@
                                     <div class="form-group col">
                                         <label for="agent_id" class="col-form-label">Agent ID : </label>
                                         <input type="text" class="form-control" id="agent_id" placeholder="#"
-                                               name="agent_id" value="{{ old('agent_id') }}">
+                                               name="agent_id">
                                         @if ($errors->first('agent_id'))
                                             <div class="invalid-feedback">
                                                 <span class="badge badge-danger"> {{ $errors->first('agent_id') }}</span>
@@ -117,7 +114,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="col-form-label">Email : </label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email"
+                                    <input type="email" class="form-control" id="email"
                                            name="email">
                                     @if ($errors->first('email'))
                                         <div class="invalid-feedback">
@@ -149,7 +146,7 @@
                                     <div class="form-group col-md-9">
                                         <label for="phone_number" class="col-form-label">Phone No. : </label>
                                         <input type="number" class="form-control" id="phone_number"
-                                               placeholder="XXX XXXX"
+
                                                name="phone_number">
                                         @if ($errors->first('phone_number'))
                                             <div class="invalid-feedback">
@@ -160,7 +157,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-form-label">Password : </label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password"
+                                    <input type="password" class="form-control" id="password"
                                            name="password">
                                     @if ($errors->first('password'))
                                         <div class="invalid-feedback">
@@ -171,7 +168,7 @@
                                 <div class="form-group">
                                     <label for="confirm_password" class="col-form-label">Confirm Password : </label>
                                     <input type="password" class="form-control" id="confirm_password"
-                                           placeholder="Password" name="confirm_password">
+                                           name="confirm_password">
                                     @if ($errors->first('confirm_password'))
                                         <div class="invalid-feedback">
                                             <span class="badge badge-danger"> {{ $errors->first('confirm_password') }}</span>
@@ -185,32 +182,26 @@
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="unit" class="col-form-label">Unit</label>
-                                        <input type="text" class="form-control" id="unit" name="unit"
-                                               placeholder="No. 9">
+                                        <input type="text" class="form-control" id="unit" name="unit">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="floor" class="col-form-label">Floor</label>
-                                        <input type="text" class="form-control" id="floor" name="floor"
-                                               placeholder="2">
+                                        <input type="text" class="form-control" id="floor" name="floor">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="block" class="col-form-label">Block</label>
-                                        <input type="text" class="form-control" id="block" name="block"
-                                               placeholder="Block 4">
+                                        <input type="text" class="form-control" id="block" name="block">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address1" class="col-form-label">Address 1 : </label>
-                                    <input type="text" class="form-control" id="address1"
-                                           placeholder="Jalan Mahsuri 31/C" name="address1">
+                                    <input type="text" class="form-control" id="address1" name="address1">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address2" class="col-form-label">Address 2 : </label>
-                                    <input type="text" class="form-control" id="address2"
-                                           placeholder="Komplex Ceria"
-                                           name="address2">
+                                    <input type="text" class="form-control" id="address2" name="address2">
                                 </div>
 
                                 <div class="row">
@@ -252,29 +243,123 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Agent</button>
+                        <button type="submit" class="btn btn-primary" value="agent">Add Agent</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <!-- Add Admin Modal -->
-    <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="addAdmin" aria-hidden="true">
+    <div class="modal fade" id="add_admin" tabindex="-1" role="dialog" aria-labelledby="add_admin" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addAdmin">Add Admin</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form action="add-admin" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add_admin">Add Admin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="first_name" class="col-form-label">First Name : </label>
+                                        <input type="text" class="form-control" id="first_name"
+                                               name="first_name">
+                                        @if ($errors->first('first_name'))
+                                            <div class="invalid-feedback">
+                                                <span class="badge badge-danger"> {{ $errors->first('first_name') }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="last_name" class="col-form-label">Last Name : </label>
+                                        <input type="text" class="form-control" id="last_name"
+                                               name="last_name">
+                                        @if ($errors->first('last_name'))
+                                            <div class="invalid-feedback">
+                                                <span class="badge badge-danger"> {{ $errors->first('last_name') }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Email : </label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email"
+                                           name="email">
+                                    @if ($errors->first('email'))
+                                        <div class="invalid-feedback">
+                                            <span class="badge badge-danger"> {{ $errors->first('email') }}</span>
+                                        </div>
+                                    @endif
+                                    @if ($errors->email->first('email'))
+                                        <div class="invalid-feedback">
+                                            <span class="badge badge-danger"> Email id already exist</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label for="ext" class="col-form-label">Ext : </label>
+                                        <select id="ext" class="form-control" name="ext">
+                                            <option></option>
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="012">012</option>
+                                            <option value="013">013</option>
+                                            <option value="014">014</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                            <option value="019">019</option>
+                                        </select>
+                                        @if ($errors->first('ext'))
+                                            <div class="invalid-feedback">
+                                                <span class="badge badge-danger"> {{ $errors->first('ext') }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <label for="phone_number" class="col-form-label">Phone No. : </label>
+                                        <input type="number" class="form-control" id="phone_number"
+
+                                               name="phone_number">
+                                        @if ($errors->first('phone_number'))
+                                            <div class="invalid-feedback">
+                                                <span class="badge badge-danger"> {{ $errors->first('phone_number') }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-form-label">Password : </label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                    @if ($errors->first('password'))
+                                        <div class="invalid-feedback">
+                                            <span class="badge badge-danger"> {{ $errors->first('password') }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm_password" class="col-form-label">Confirm Password : </label>
+                                    <input type="password" class="form-control" id="confirm_password"
+                                           name="confirm_password">
+                                    @if ($errors->first('confirm_password'))
+                                        <div class="invalid-feedback">
+                                            <span class="badge badge-danger"> {{ $errors->first('confirm_password') }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="admin">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
